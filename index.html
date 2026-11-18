@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- 한글과 영어가 깨지지 않도록 UTF-8 인코딩을 지정합니다. -->
+<meta charset="utf-8"/>
+<!-- 모바일 화면 너비에 맞춰 반응형 배치를 적용합니다. -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- 브라우저 탭에 표시할 웹사이트 이름입니다. -->
+<title>Who's Bookcase</title>
+<!-- CSS 파일을 연결하여 책장과 테마 디자인을 적용합니다. -->
+<link href="css/style.css" rel="stylesheet"/>
+<!-- 기능별 JavaScript 파일을 연결합니다. defer로 HTML 분석 후 작성 순서대로 실행합니다. -->
+<script defer="" src="js/config.js"></script><script defer="" src="js/i18n.js"></script>
+<!-- 기능별 JavaScript 파일을 연결합니다. defer로 HTML 분석 후 작성 순서대로 실행합니다. -->
+<script defer="" src="js/owner.js"></script>
+<!-- 기능별 JavaScript 파일을 연결합니다. defer로 HTML 분석 후 작성 순서대로 실행합니다. -->
+<script defer="" src="js/genres.js"></script>
+<!-- 기능별 JavaScript 파일을 연결합니다. defer로 HTML 분석 후 작성 순서대로 실행합니다. -->
+<script defer="" src="js/themes.js"></script>
+<!-- 기능별 JavaScript 파일을 연결합니다. defer로 HTML 분석 후 작성 순서대로 실행합니다. -->
+<script defer="" src="js/shelf.js"></script>
+<!-- 기능별 JavaScript 파일을 연결합니다. defer로 HTML 분석 후 작성 순서대로 실행합니다. -->
+<script defer="" src="js/detail.js"></script>
+<!-- 기능별 JavaScript 파일을 연결합니다. defer로 HTML 분석 후 작성 순서대로 실행합니다. -->
+<script defer="" src="js/book-actions.js"></script>
+<!-- 기능별 JavaScript 파일을 연결합니다. defer로 HTML 분석 후 작성 순서대로 실행합니다. -->
+<script defer="" src="js/notes.js"></script><script defer="" src="js/language.js"></script>
+<!-- 기능별 JavaScript 파일을 연결합니다. defer로 HTML 분석 후 작성 순서대로 실행합니다. -->
+<script defer="" src="js/app.js"></script>
+</head>
+<body>
+<!-- 웹페이지의 중심 콘텐츠를 담는 최대 너비 제한 컨테이너입니다. -->
+<main class="container">
+<!-- Header: editable owner name -->
+<!-- 책장 주인의 이름과 Who's Bookcase 제목을 보여주는 상단 영역입니다. -->
+<header>
+<!-- Who 부분을 버튼으로 만들고 뒤의 's Bookcase와 공백 없이 연결합니다. -->
+<h1><button aria-label="Edit bookcase owner name" class="owner-name" data-i18n-aria-label="attr48" data-i18n-title="attr49" id="edit-owner" title="Click to edit owner name" type="button"><span id="owner-name">Who</span><span aria-hidden="true" class="edit-mark">✎</span></button>'s Bookcase</h1>
+</header>
+<!-- Bookcase: shelves and bottom controls -->
+<!-- 책장 메인 화면: 위아래 책장과 네 개의 관리 버튼을 배치합니다. -->
+<section aria-label="My Bookcase" data-i18n-aria-label="attr50" id="shelf-view">
+<!-- JavaScript가 윗칸에 책 버튼을 동적으로 추가할 위치입니다. -->
+<div class="bookshelf"><div aria-label="Top Shelf" class="shelf" data-i18n-aria-label="attr51" id="shelf-top"></div><div aria-label="Bottom Shelf" class="shelf" data-i18n-aria-label="attr52" id="shelf-bottom"></div></div>
+<!-- Add Book, Delete Book, Theme Settings, Genre Color Settings 버튼을 한 줄에 배치합니다. -->
+<div class="actions bookcase-controls"><button data-i18n="static1" id="add-book" type="button">Add Book</button><button data-i18n="static2" id="delete-book" type="button">Delete Book</button><button data-i18n="static3" id="theme-settings" type="button">Theme Settings</button><button data-i18n="static4" id="genre-settings" type="button">Genre Color Settings</button><button data-i18n="languageButton" id="language-settings" type="button">Language</button></div>
+</section>
+<!-- Book details: inline hover edit and progress editor -->
+<!-- 선택한 책의 상세 화면이며 처음에는 hidden으로 숨겨 둡니다. -->
+<section hidden="" id="detail-view">
+<!-- 사용자가 클릭하여 동작을 실행할 수 있는 버튼입니다. -->
+<button data-i18n="static5" id="back" type="button">Back to Bookcase</button>
+<!-- 마우스 호버나 키보드 포커스로 편집 가능한 책 정보 항목입니다. -->
+<div class="detail-heading"><h2 class="editable-field" id="detail-title" role="button" tabindex="0" title="Click to edit book information"></h2></div><p class="editable-field" id="detail-author" role="button" tabindex="0" title="Click to edit book information"></p><p class="editable-field" id="detail-publisher" role="button" tabindex="0" title="Click to edit book information"></p><p class="editable-field" id="detail-genre" role="button" tabindex="0" title="Click to edit book information"></p>
+<!-- 독서 진행률 막대를 클릭하거나 키보드로 선택하면 페이지 입력 팝업을 엽니다. -->
+<div aria-label="Edit pages read" class="progress-control" data-i18n-aria-label="attr53" id="progress-control" role="button" tabindex="0" title="Click to enter pages read">
+<!-- 관련 요소를 하나의 레이아웃 묶음으로 구성합니다. -->
+<div aria-label="Reading Progress" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="progress" data-i18n-aria-label="attr54" role="progressbar"><div id="progress-fill"></div></div>
+<!-- 이 요소는 해당 화면에 필요한 콘텐츠와 입력 구조를 정의합니다. -->
+<span aria-hidden="true" class="progress-edit-mark">✎</span>
+</div>
+<!-- 이 요소는 해당 화면에 필요한 콘텐츠와 입력 구조를 정의합니다. -->
+<p id="progress-text"></p>
+<!-- 관련 요소를 하나의 레이아웃 묶음으로 구성합니다. -->
+<div class="actions"><button data-i18n="static6" id="add-sentence" type="button">Add Sentence</button><button data-i18n="static7" id="add-comment" type="button">Add Note</button></div>
+<!-- 현재 화면의 제목 또는 소제목을 표시합니다. -->
+<h3 data-i18n="static8">Favorite Sentences</h3><ul id="sentences"></ul><h3 data-i18n="static9">Notes</h3><ul id="comments"></ul>
+</section>
+</main>
+<!-- Dialog components: progress, owner, book, genre, theme and notes -->
+<!-- 읽은 페이지 수를 숫자로 입력하는 팝업입니다. -->
+<dialog id="progress-dialog"><form id="progress-form"><h2 data-i18n="static10">Pages Read</h2><label data-i18n="static11">Pages Read<input id="read-pages" min="0" required="" step="1" type="number"/></label><div class="actions"><button data-i18n="static12" id="cancel-progress" type="button">Cancel</button><button data-i18n="static13" type="submit">Save</button></div></form></dialog>
+<!-- Who's 제목의 Who 부분을 수정하는 팝업입니다. -->
+<dialog id="owner-dialog"><form id="owner-form"><h2 data-i18n="static14">Edit Bookcase Owner</h2><label data-i18n="static15">Owner Name<input data-i18n-placeholder="attr55" id="owner-input" maxlength="40" placeholder="e.g. Alex" required=""/></label><div class="actions"><button data-i18n="static16" id="cancel-owner" type="button">Cancel</button><button data-i18n="static17" type="submit">Save</button></div></form></dialog>
+<!-- 새 책의 제목·저자·출판사·장르·페이지 수를 입력하는 팝업입니다. -->
+<dialog id="book-dialog"><form id="book-form"><h2 data-i18n="static18">Add New Book</h2><label data-i18n="static19">Title<input maxlength="100" name="title" required=""/></label><label data-i18n="static20">Author<input maxlength="100" name="author" required=""/></label><label data-i18n="static21">Publisher<input maxlength="100" name="publisher" required=""/></label><label data-i18n="static22">Genre<select id="book-genre" name="genre" required></select><input id="book-genre-custom" type="text" maxlength="40" placeholder="New genre name" hidden></label><datalist id="genre-options"></datalist><p class="hint" data-i18n="static23">New genres are added automatically.</p><label data-i18n="static24">Total Pages<input min="1" name="pages" required="" step="1" type="number"/></label><div class="actions"><button data-i18n="static25" id="cancel-book" type="button">Cancel</button><button data-i18n="static26" type="submit">Save</button></div></form></dialog>
+<!-- 기존 책 정보 수정 팝업 -->
+<!-- 기존 책의 정보를 수정하는 팝업입니다. -->
+<dialog id="edit-book-dialog">
+<!-- 이 요소는 해당 화면에 필요한 콘텐츠와 입력 구조를 정의합니다. -->
+<form id="edit-book-form">
+<!-- 현재 화면의 제목 또는 소제목을 표시합니다. -->
+<h2 data-i18n="static27">Edit Book Information</h2>
+<!-- 이 요소는 해당 화면에 필요한 콘텐츠와 입력 구조를 정의합니다. -->
+<label data-i18n="static28">Title<input maxlength="100" name="title" required=""/></label>
+<!-- 이 요소는 해당 화면에 필요한 콘텐츠와 입력 구조를 정의합니다. -->
+<label data-i18n="static29">Author<input maxlength="100" name="author" required=""/></label>
+<!-- 이 요소는 해당 화면에 필요한 콘텐츠와 입력 구조를 정의합니다. -->
+<label data-i18n="static30">Publisher<input maxlength="100" name="publisher" required=""/></label>
+<!-- 이 요소는 해당 화면에 필요한 콘텐츠와 입력 구조를 정의합니다. -->
+<label data-i18n="static31">Genre<select id="edit-genre" name="genre" required></select><input id="edit-genre-custom" type="text" maxlength="40" placeholder="New genre name" hidden></label>
+<!-- 이 요소는 해당 화면에 필요한 콘텐츠와 입력 구조를 정의합니다. -->
+<p class="hint" data-i18n="static32">New genres are added automatically.</p>
+<!-- 이 요소는 해당 화면에 필요한 콘텐츠와 입력 구조를 정의합니다. -->
+<label data-i18n="static33">Total Pages<input min="1" name="pages" required="" step="1" type="number"/></label>
+<!-- 관련 요소를 하나의 레이아웃 묶음으로 구성합니다. -->
+<div class="actions"><button data-i18n="static34" id="cancel-edit-book" type="button">Cancel</button><button data-i18n="static35" type="submit">Save Changes</button></div>
+</form>
+</dialog>
+<!-- 장르별 책등 색상을 선택하고 새 장르를 추가하는 팝업입니다. -->
+<dialog id="genre-dialog"><div class="dialog-content"><h2 data-i18n="static36">Genre Color Settings</h2><p class="hint" data-i18n="static37">Changes apply to every book in the genre.</p><div id="genre-list"></div><form class="genre-add" id="add-genre-form"><label data-i18n="static38">New Genre<input data-i18n-placeholder="attr58" id="new-genre-name" maxlength="40" placeholder="Genre name" required=""/></label><label data-i18n="static39">Color<input id="new-genre-color" type="color" value="#b4c7b1"/></label><button data-i18n="static40" type="submit">Add Genre</button></form><button data-i18n="static41" id="close-genre" type="button">Close</button></div></dialog>
+<!-- White부터 Lavender까지 준비된 테마를 선택하는 팝업입니다. -->
+<dialog id="theme-dialog"><div class="dialog-content"><h2 data-i18n="static42">Theme Settings</h2><div class="theme-options" id="theme-options"></div><div class="actions"><button data-i18n="static43" id="close-theme" type="button">Close</button></div></div></dialog>
+<!-- 인상 깊은 문장과 메모의 추가·수정·삭제에 공통으로 사용하는 팝업입니다. -->
+<dialog id="note-dialog"><form id="note-form"><h2 id="note-heading">Add Note</h2><textarea data-i18n-placeholder="attr59" id="note-content" maxlength="2000" placeholder="Write your note here" required="" rows="5"></textarea><div class="actions"><button data-i18n="static45" hidden="" id="delete-note" type="button">Delete</button><button data-i18n="static46" id="cancel-note" type="button">Cancel</button><button data-i18n="static47" type="submit">Save</button></div></form></dialog>
+<dialog id="language-dialog"><div class="dialog-content"><h2 data-i18n="languageHeading">Language Settings</h2><div class="language-options"><button data-language="en" type="button">English</button><button data-language="ko" type="button">한국어</button></div><div class="actions"><button data-i18n="languageClose" id="close-language" type="button">Close</button></div></div></dialog></body>
+</html>
